@@ -42,7 +42,7 @@ jobs:
         cd DotnetTemplate.Web
         npm run lint
       if: ${{ failure() }}
-        run: echo "I'm Broken"
+      run: echo "I'm Broken"
 
     - name: Run NPM tests #run tests on typescript
       run: | 
