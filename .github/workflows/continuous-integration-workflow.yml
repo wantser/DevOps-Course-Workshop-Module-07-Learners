@@ -9,6 +9,10 @@ jobs:
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       env:
+        SLACK_COLOR: '#3278BD'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Pipeline actions started'
+        SLACK_TITLE: Post Title
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
@@ -34,9 +38,17 @@ jobs:
         npm run build 
     
     - name: Run linter #run lint on typecode
-      run: | 
+      run:  
         cd DotnetTemplate.Web
-        npm run lint 
+        npm run lint
+      if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2 
+        env:
+          SLACK_COLOR: '#3278BD'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+           SLACK_MESSAGE: 'Run Linter Failed'
+          SLACK_TITLE: Post Title
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: Run NPM tests #run tests on typescript
       run: | 
@@ -44,6 +56,10 @@ jobs:
         npm t
     
     - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
+      uses: rtCamp/action-slack-notify@v2 
       env:
+        SLACK_COLOR: '#3278BD'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Post Content :rocket:'
+        SLACK_TITLE: Post Title
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
