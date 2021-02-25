@@ -27,7 +27,17 @@ jobs:
     
     - name: Build C# Code #build the C# code
       run: dotnet build #build c# code
-
+    
+    - name: Build C# Code has succeeded
+      if: ${{ success() }}
+      uses: rtCamp/action-slack-notify@v2 
+      env:
+        SLACK_COLOR: '#3278BD'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'C# Code build succeeded'
+        SLACK_TITLE: Post Title
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    
     - name: Test C# Code #test c#
       run: dotnet test
 
@@ -44,7 +54,13 @@ jobs:
 
     - name: Run linter has succeeded
       if: ${{ success() }}
-      run: echo 'Worked'
+      uses: rtCamp/action-slack-notify@v2 
+      env:
+        SLACK_COLOR: '#3278BD'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Linter succeeded'
+        SLACK_TITLE: Post Title
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: Run NPM tests #run tests on typescript
       run: | 
