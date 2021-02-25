@@ -24,16 +24,16 @@ jobs:
 
     - name: Run NPM tests #generates npm typescript
       run: | 
-        cd DotnetTemplates.Web
+        cd /DotnetTemplates.Web
         npm run build 
     
     - name: Run linter #run lint on typecode
       run: | 
-        cd DotnetTemplates.Web
+        cd /DotnetTemplates.Web
         npm run lint 
 
     - name: Run NPM tests #run tests on typescript
       run: | 
-        cd DotnetTemplates.Web
+        cd /DotnetTemplates.Web
         npm t
   
