@@ -25,6 +25,7 @@ jobs:
     - name: Build NPM  #generates npm typescript
       run: | 
         cd DotnetTemplate.Web
+        npm install
         npm run build 
     
     - name: Run linter #run lint on typecode
