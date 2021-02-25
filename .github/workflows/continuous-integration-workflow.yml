@@ -37,4 +37,14 @@ jobs:
       run: | 
         cd DotnetTemplate.Web
         npm t
-  
+    
+    - name: Slack Notification
+      uses: Andrew.Want@capita.com/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: general
+        SLACK_COLOR: '#3278BD'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Post Content :rocket:'
+        SLACK_TITLE: Post Title
+        SLACK_USERNAME: Andrew.Want@capita.com
+        SLACK_WEBHOOK: ${{ https://hooks.slack.com/services/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 }}
