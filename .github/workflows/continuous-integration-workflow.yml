@@ -38,11 +38,13 @@ jobs:
         npm run build 
     
     - name: Run linter #run lint on typecode
-      run:  
+      run: |
         cd DotnetTemplate.Web
         npm run lint
-      if: ${{ failure() }}
-        echo "I'm Broken"
+
+    - name: Run linter has succeeded
+      if: ${{ success() }}
+        echo 'Worked'
 
     - name: Run NPM tests #run tests on typescript
       run: | 
