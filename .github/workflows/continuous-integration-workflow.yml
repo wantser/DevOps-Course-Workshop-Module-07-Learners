@@ -44,7 +44,7 @@ jobs:
 
     - name: Run linter has succeeded
       if: ${{ success() }}
-        echo 'Worked'
+      run: echo 'Worked'
 
     - name: Run NPM tests #run tests on typescript
       run: | 
