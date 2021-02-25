@@ -39,7 +39,17 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
     
     - name: Test C# Code #test c#
-      run: dotnet test
+      run: dotnet tes
+
+    - name: C# Test Failed
+      if: ${{ failure() }}
+      uses: rtCamp/action-slack-notify@v2 
+      env:
+        SLACK_COLOR: '#3278BD'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'C# Test Failed'
+        SLACK_TITLE: Post Title
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: Build NPM  #generates npm typescript
       run: | 
