@@ -22,18 +22,18 @@ jobs:
     - name: Test C# Code #test c#
       run: dotnet test
 
-    - name: Run NPM tests #generates npm typescript
+    - name: Build NPM  #generates npm typescript
       run: | 
-        cd /DotnetTemplates.Web
+        cd DotnetTemplate.Web
         npm run build 
     
     - name: Run linter #run lint on typecode
       run: | 
-        cd /DotnetTemplates.Web
+        cd DotnetTemplate.Web
         npm run lint 
 
     - name: Run NPM tests #run tests on typescript
       run: | 
-        cd /DotnetTemplates.Web
+        cd DotnetTemplate.Web
         npm t
   
